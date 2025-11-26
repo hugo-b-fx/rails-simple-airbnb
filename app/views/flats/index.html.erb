@@ -1,0 +1,23 @@
+<h1>All Flats</h1>
+
+<div class="row">
+  <% @flats.each do |flat| %>
+    <div class="col-md-4 mb-4">
+      <div class="card p-3">
+        <h4><%= flat.name %></h4>
+        <p><%= flat.address %></p>
+        <p><strong><%= flat.price_per_night %>€</strong> / night</p>
+        <p><%= flat.number_of_guests %> guests</p>
+
+        <%= link_to "Details", flat_path(flat), class: "btn btn-primary btn-sm" %>
+        <%= link_to "Edit", edit_flat_path(flat), class: "btn btn-warning btn-sm" %>
+        <%= link_to "Delete", flat_path(flat),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class: "btn btn-danger btn-sm" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Add a Flat", new_flat_path, class: "btn btn-success mt-3" %>
